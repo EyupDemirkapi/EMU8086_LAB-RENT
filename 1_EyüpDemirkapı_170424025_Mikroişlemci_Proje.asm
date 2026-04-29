@@ -71,8 +71,8 @@ ORG 100h
     
     OYUNCU_X        DW 1
     OYUNCU_Y        DW 1
-    OYUN_SURESI     DW 60       ; 60 Saniye limit
-    SANIYE_SAYAC    DB 0        ; Gerçek saniye için döngü sayacý
+    OYUN_SURESI     DW 60       
+    SANIYE_SAYAC    DB 0       
     GUNCEL_HARITA   DW ?
 
 .CODE
@@ -152,14 +152,14 @@ D_SAGA:
     JMP ZAMAN_GUNCELLE
 
 ZAMAN_GUNCELLE:
-    ; 0.1 saniye gecikme
+    
     MOV CX, 01h
     MOV DX, 86A0h      
     MOV AH, 86h
     INT 15h
 
     INC SANIYE_SAYAC
-    CMP SANIYE_SAYAC, 10    ; 10 döngü = 1 saniye
+    CMP SANIYE_SAYAC, 10    
     JNE OYUN_DONGUSU        
 
     MOV SANIYE_SAYAC, 0     
